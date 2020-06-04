@@ -9,7 +9,7 @@ body {
   margin: 0;
   font-family: 'Fira Sans', 'Droid Sans', 'Helvetica Neue', sans-serif;
   font-size: .7em;
-  background: linear-gradient(rgb(47,150,163), rgb(48,62,148));
+  background: linear-gradient(#2f96a3, rgb(48,62,148));
 }
 
 /*******************
@@ -30,4 +30,37 @@ body {
 
 .header h1 {
   display: inline;
+  text-shadow: 2px 2px 2px rgba(206,89,55,0) ;
+}
+
+.searchBar {
+  margin: auto;
+  text-align: center;
+}
+
+#search {
+  display: inline-block;
+}
+
+button[type=button] {
+  padding: 4px;
+  cursor: pointer;
+}
+
+button[type=button]:hover {
+  color: white;
+  background-color: #3aabc7;
+}
+
+/*******************
+////media queries///
+*******************/
+@media screen and (max-width: 330px){
+  .header {
+    min-width: 300px;
+  }
+
+  .searchBar {
+    min-width: 330px;
+  }
 }

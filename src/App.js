@@ -1,6 +1,7 @@
 import React from 'react';
 import './index.css';
-import { faSun } from '@fortawesome/free-solid-svg-icons';
+import { faSun, faSearch } from '@fortawesome/free-solid-svg-icons';
+
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 
 const keys = require('./key.js');
@@ -20,18 +21,24 @@ class App extends React.Component {
 
 
   render() {
+	  return (
+		  <div className="App">
+			  <header className="header">
+				  <FontAwesomeIcon id="sun" icon={faSun} />
+				  <h1>Blue Sky Weather Forecast</h1>
+			  </header>
+			  <form className="searchBar">
+				  <input id="search" type="text" placeholder="Type Location Here..." />
+				  <button id="button" type="button">
+					  <FontAwesomeIcon id="searchIcon" icon={faSearch} />
+				  </button>
+				  <div className="components">
 
-    return (
-      <div className="App">
-        <header className="header">
-          <FontAwesomeIcon id="sun" icon={faSun} />
-          <h1>Blue Sky Weather Forecast</h1>
-        </header>
-        <div className="components"></div>
-
-      </div>
-    );
-  }
+				  </div>
+			  </form>
+		  </div>
+	  );
+  } 
 
 }
 
