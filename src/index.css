@@ -38,16 +38,20 @@ body {
   text-align: center;
 }
 
+/*******************
+////search.js////////
+*******************/
+
 #search {
   display: inline-block;
 }
 
-button[type=button] {
+#button {
   padding: 4px;
   cursor: pointer;
 }
 
-button[type=button]:hover {
+#button:hover {
   color: white;
   background-color: #3aabc7;
 }
