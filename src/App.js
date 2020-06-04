@@ -1,5 +1,9 @@
 import React from 'react';
 import './index.css';
+import { faSun } from '@fortawesome/free-solid-svg-icons';
+import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
+
+const keys = require('./key.js');
 
 class App extends React.Component {
   constructor(props){
@@ -11,22 +15,7 @@ class App extends React.Component {
   }
 
   componentDidMount() {
-
-    if(navigator.geolocation) {
-      navigator.geolocation.getCurrentPosition(
-        function(position) {
-          console.log(position)
-          this.setState ({
-            lat: position.coords.latitude,
-            long: position.coords.longitude,
-          });
-        },
-        function(error) {
-          console.warn(`Error(${error.code})): ${error.message}`);
-        },
-        {timeout: 60000, enableHighAccuracy: true, maximumAge: 75000}
-      )
-    }
+    //console.log(keys.default.apiKeys.weather);
   }
 
 
@@ -34,8 +23,11 @@ class App extends React.Component {
 
     return (
       <div className="App">
-        <p> lat:{this.state.lat} </p>
-        <p> long: {this.state.long}</p>
+        <header className="header">
+          <FontAwesomeIcon id="sun" icon={faSun} />
+          <h1>Blue Sky Weather Forecast</h1>
+        </header>
+        <div className="components"></div>
 
       </div>
     );
