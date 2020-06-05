@@ -1,4 +1,5 @@
 import React from 'react';
+import Weather from './weather.js';
 import './index.css';
 import { faSearch} from '@fortawesome/free-solid-svg-icons';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
@@ -10,14 +11,17 @@ class Search extends React.Component {
     constructor(props) {
         super(props);
         this.state = {
+            weather: null,
             lat: null,
             long: null,
             name: null,
             input: "",
+            isLoaded: false,
         };
 
         this.getLocation = this.getLocation.bind(this);
         this.setInput = this.setInput.bind(this);
+        //this.displayWeather = this.displayWeather.bind(this);
     }
 
     setInput(event) {
@@ -40,25 +44,52 @@ class Search extends React.Component {
                 lat: data[0].lat,
                 long: data[0].lon,
             });
-            console.log(this.state.name);
-            console.log(this.state.lat);
-            console.log(this.state.long);
+            console.log(this.state.name)
+            this.getWeather();
         })
         .catch((error) => console.log(error))
     }
 
-    render() {
+    getWeather() {
+        var parent = document.getElementsByClassName("weather");
+        parent.innerHTML = "";
 
+        let url = `https://api.openweathermap.org/data/2.5/onecall?lat=${this.state.lat}&lon=${this.state.long}&appid=${keys.default.apiKeys.weather}`;
+
+        fetch(url)
+        .then(response => response.json())
+        .then((data) => {
+            console.log(data);
+            this.setState({
+                weather: data,
+                isLoaded: true,
+            });
+        })
+        .catch((error) => console.log(error));
+    }
+
+    render() {
+        const { weather, isLoaded } = this.state;
+
+        if(!isLoaded) {
+             var element =  <div></div>;
+        } else {
+            var element = <Weather key={weather} data={weather} />;
+        }
         return (
-            <form className="searchBar" onSubmit={this.getLocation}>
-                <label>
-                    <input id="search" type="text" placeholder="Type Location Here..." value={this.state.input} onChange={this.setInput}/>
-                </label>
-                <button id="button">
-                     <FontAwesomeIcon id="searchIcon" icon={faSearch} />
-                </button>
-                    
-            </form>
+            <div className="searchWrapper">
+                <form className="searchBar" onSubmit={this.getLocation}>
+                    <label>
+                        <input id="search" type="text" placeholder="Type Location Here..." value={this.state.input} onChange={this.setInput}/>
+                    </label>
+                    <button id="button">
+                        <FontAwesomeIcon id="searchIcon" icon={faSearch} />
+                    </button>
+                </form>
+                <div className="weather">
+                    {element}
+                </div>
+            </div>
         )
     }
 }

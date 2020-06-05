@@ -10,10 +10,6 @@ class App extends React.Component {
     super(props);
   }
 
-  componentDidMount() {
-    //console.log(keys.default.apiKeys.weather);
-  }
-
   render() {
 	  return (
 		  <div className="App">
