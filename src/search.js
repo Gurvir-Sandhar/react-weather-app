@@ -4,8 +4,7 @@ import './index.css';
 import { faSearch} from '@fortawesome/free-solid-svg-icons';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 
-const keys = require('./key.js');
-//console.log(keys.default.apiKeys.weather);
+//const keys = require('./key.js');
 
 class Search extends React.Component {
     constructor(props) {
@@ -33,7 +32,7 @@ class Search extends React.Component {
     getLocation(event) {
         event.preventDefault();
         
-        let url = `https://us1.locationiq.com/v1/search.php?key=${keys.default.apiKeys.map}&q=${this.state.input}&format=json`;
+        let url = `https://us1.locationiq.com/v1/search.php?key=${process.env.mapkey}&q=${this.state.input}&format=json`;
         
         fetch(url)
         .then(response => response.json())
@@ -54,7 +53,7 @@ class Search extends React.Component {
         var parent = document.getElementsByClassName("weather");
         parent.innerHTML = "";
 
-        let url = `https://api.openweathermap.org/data/2.5/onecall?lat=${this.state.lat}&lon=${this.state.long}&appid=${keys.default.apiKeys.weather}&units=imperial`;
+        let url = `https://api.openweathermap.org/data/2.5/onecall?lat=${this.state.lat}&lon=${this.state.long}&appid=${process.env.weatherkey}&units=imperial`;
 
         fetch(url)
         .then(response => response.json())
