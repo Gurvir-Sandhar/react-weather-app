@@ -21,7 +21,7 @@ class Search extends React.Component {
 
         this.getLocation = this.getLocation.bind(this);
         this.setInput = this.setInput.bind(this);
-        //this.displayWeather = this.displayWeather.bind(this);
+        this.getWeather = this.getWeather.bind(this);
     }
 
     setInput(event) {
@@ -44,7 +44,7 @@ class Search extends React.Component {
                 lat: data[0].lat,
                 long: data[0].lon,
             });
-            console.log(this.state.name)
+            //console.log(this.state.name)
             this.getWeather();
         })
         .catch((error) => console.log(error))
@@ -54,12 +54,12 @@ class Search extends React.Component {
         var parent = document.getElementsByClassName("weather");
         parent.innerHTML = "";
 
-        let url = `https://api.openweathermap.org/data/2.5/onecall?lat=${this.state.lat}&lon=${this.state.long}&appid=${keys.default.apiKeys.weather}`;
+        let url = `https://api.openweathermap.org/data/2.5/onecall?lat=${this.state.lat}&lon=${this.state.long}&appid=${keys.default.apiKeys.weather}&units=imperial`;
 
         fetch(url)
         .then(response => response.json())
         .then((data) => {
-            console.log(data);
+            //console.log(data);
             this.setState({
                 weather: data,
                 isLoaded: true,
@@ -74,7 +74,7 @@ class Search extends React.Component {
         if(!isLoaded) {
              var element =  <div></div>;
         } else {
-            var element = <Weather key={weather} data={weather} />;
+            var element = <Weather key={weather} data={weather} name={this.state.name}/>;
         }
         return (
             <div className="searchWrapper">
