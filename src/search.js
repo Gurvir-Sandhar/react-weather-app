@@ -32,7 +32,7 @@ class Search extends React.Component {
     getLocation(event) {
         event.preventDefault();
         
-        let url = `https://us1.locationiq.com/v1/search.php?key=${process.env.mapkey}&q=${this.state.input}&format=json`;
+        let url = `https://us1.locationiq.com/v1/search.php?key=${process.env.REACT_APP_MAP}&q=${this.state.input}&format=json`;
         
         fetch(url)
         .then(response => response.json())
@@ -53,7 +53,7 @@ class Search extends React.Component {
         var parent = document.getElementsByClassName("weather");
         parent.innerHTML = "";
 
-        let url = `https://api.openweathermap.org/data/2.5/onecall?lat=${this.state.lat}&lon=${this.state.long}&appid=${process.env.weatherkey}&units=imperial`;
+        let url = `https://api.openweathermap.org/data/2.5/onecall?lat=${this.state.lat}&lon=${this.state.long}&appid=${process.env.REACT_APP_WEATHER}&units=imperial`;
 
         fetch(url)
         .then(response => response.json())
