@@ -5,10 +5,6 @@ import moment from 'moment-timezone';
 import './index.css';
 
 class Weather extends React.Component {
-    constructor(props) {
-        super(props);
-    }
-
     render() {
         const {data} = this.props;
 
@@ -25,19 +21,19 @@ class Weather extends React.Component {
             day = true;
         }
 
-        if(description == "Clouds"){
+        if(description === "Clouds"){
             icon = "CLOUDY";
-        } else if(description == "Snow"){
+        } else if(description === "Snow"){
             icon = "SNOW";
-        } else if(description == "Rain" || description == "Drizzle"){
+        } else if(description === "Rain" || description === "Drizzle"){
             icon = "RAIN";
-        } else if(description == "Fog"){
+        } else if(description === "Fog"){
             icon = "FOG";
-        } else if(description == "Tornado"){
+        } else if(description === "Tornado"){
             icon = "WIND";
-        } else if(description == "Clear" && day == true){
+        } else if(description === "Clear" && day === true){
             icon = "CLEAR_DAY";
-        } else if(description == "Clear" && !day){
+        } else if(description === "Clear" && !day){
             icon = "CLEAR_NIGHT";
         } else{
             icon = "CLOUDY";

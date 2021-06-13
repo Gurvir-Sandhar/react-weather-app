@@ -1,10 +1,10 @@
+//search bar component for searching different locations
 import React from 'react';
 import Weather from './weather.js';
 import './index.css';
 import { faSearch} from '@fortawesome/free-solid-svg-icons';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 
-//const keys = require('./key.js');
 
 class Search extends React.Component {
     constructor(props) {
@@ -70,10 +70,11 @@ class Search extends React.Component {
     render() {
         const { weather, isLoaded } = this.state;
 
+        var element;
         if(!isLoaded) {
-             var element =  <div></div>;
+             element =  <div></div>;
         } else {
-            var element = <Weather key={weather} data={weather} name={this.state.name}/>;
+            element = <Weather key={weather} data={weather} name={this.state.name}/>;
         }
         return (
             <div className="searchWrapper">
