@@ -4,6 +4,7 @@ import Weather from './weather.js';
 import './index.css';
 import { faSearch} from '@fortawesome/free-solid-svg-icons';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
+import { Button, Form } from 'react-bootstrap';
 
 
 class Search extends React.Component {
@@ -78,14 +79,15 @@ class Search extends React.Component {
         }
         return (
             <div className="searchWrapper">
-                <form className="searchBar" onSubmit={this.getLocation}>
-                    <label>
-                        <input id="search" type="text" placeholder="Type Location Here..." value={this.state.input} onChange={this.setInput}/>
-                    </label>
-                    <button id="button">
-                        <FontAwesomeIcon id="searchIcon" icon={faSearch} />
-                    </button>
-                </form>
+                <Form className="searchBar" onSubmit={this.getLocation}>
+                    <Form.Group>
+                        <Form.Control id="search" type="text" size="lg" onChange={this.setInput}></Form.Control>
+                    </Form.Group>
+                    <Button id="button" variant="primary" type="submit">
+                         <FontAwesomeIcon id="searchIcon" icon={faSearch} />
+                    </Button>
+                </Form>
+
                 <div className="weather">
                     {element}
                 </div>
