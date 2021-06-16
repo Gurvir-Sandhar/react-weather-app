@@ -15,6 +15,7 @@ body {
   background-repeat: no-repeat;
 }
 
+
 /*******************
 ///////App.js///////
 *******************/
@@ -41,29 +42,35 @@ body {
   text-shadow: 2px 2px 2px rgba(206,89,55,0) ;
 }
 
-.searchBar {
-  margin: auto;
-  text-align: center;
-  padding: 10px;
-}
 
 /*******************
 ////search.js////////
 *******************/
+.searchWrapper {
+  width: 50%;
+  margin: 0 auto;
+}
+
+.searchBar {
+  display: flex;
+  justify-content: center;
+  margin: auto;
+  padding: 10px;
+}
 
 #search {
   display: inline-block;
 }
 
 #button {
-  padding: 4px;
   cursor: pointer;
 }
 
 #button:hover {
   color: white;
   background-color: #3aabc7;
-}
+} 
+
 
 /*******************
 ////weather.js//////

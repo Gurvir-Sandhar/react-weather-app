@@ -1,4 +1,3 @@
-//var Skycons = require('react-skycons');
 import React from 'react';
 import Skycons from 'react-skycons';
 import moment from 'moment-timezone';

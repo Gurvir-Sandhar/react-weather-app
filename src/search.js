@@ -81,7 +81,7 @@ class Search extends React.Component {
             <div className="searchWrapper">
                 <Form className="searchBar" onSubmit={this.getLocation}>
                     <Form.Group>
-                        <Form.Control id="search" type="text" size="lg" onChange={this.setInput}></Form.Control>
+                        <Form.Control id="search" type="text" placeholder="Search Location..." onChange={this.setInput}></Form.Control>
                     </Form.Group>
                     <Button id="button" variant="primary" type="submit">
                          <FontAwesomeIcon id="searchIcon" icon={faSearch} />
