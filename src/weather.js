@@ -7,11 +7,9 @@ class Weather extends React.Component {
     render() {
         const {data} = this.props;
 
-        console.log(data);
         var dateTime = moment().tz(data.timezone).format();
         var date = dateTime.slice(5,10);
-        var time = dateTime.slice(14,19);
-        console.log(time)
+        //var time = dateTime.slice(14,19);
         var description = data.current.weather[0].main;
         var icon = '';
         var day = false;

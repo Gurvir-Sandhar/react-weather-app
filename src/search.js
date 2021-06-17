@@ -18,7 +18,6 @@ class Search extends React.Component {
             input: "",
             isLoaded: false,
         };
-
         this.getLocation = this.getLocation.bind(this);
         this.setInput = this.setInput.bind(this);
         this.getWeather = this.getWeather.bind(this);
@@ -38,13 +37,12 @@ class Search extends React.Component {
         fetch(url)
         .then(response => response.json())
         .then((data) => {
-            //console.log(data[0]);
             this.setState({
                 name: data[0].display_name,
                 lat: data[0].lat,
                 long: data[0].lon,
             });
-            //console.log(this.state.name)
+            console.log(this.state.name)
             this.getWeather();
         })
         .catch((error) => console.log(error))
@@ -59,7 +57,7 @@ class Search extends React.Component {
         fetch(url)
         .then(response => response.json())
         .then((data) => {
-            //console.log(data);
+            console.log(data);
             this.setState({
                 weather: data,
                 isLoaded: true,
@@ -73,7 +71,7 @@ class Search extends React.Component {
 
         var element;
         if(!isLoaded) {
-             element =  <div></div>;
+             element = <div></div>;
         } else {
             element = <Weather key={weather} data={weather} name={this.state.name}/>;
         }
