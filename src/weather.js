@@ -8,12 +8,16 @@ class Weather extends React.Component {
         const {data} = this.props;
 
         var dateTime = moment().tz(data.timezone).format();
+        console.log("dateTime: " + dateTime)
         var date = dateTime.slice(5,10);
-        //var time = dateTime.slice(14,19);
+        console.log("date: " + date)
+        var time = dateTime.slice(11,16);
+        console.log("time: " +time)
         var description = data.current.weather[0].main;
         var icon = '';
         var day = false;
-        var num = parseInt(date.slice(0,2));
+        var num = parseInt(time.slice(0,2));
+        console.log("num: " + num)
         if(num > 5 && num < 20){
             day = true;
         }
@@ -36,6 +40,8 @@ class Weather extends React.Component {
             icon = "CLOUDY";
         }
 
+        console.log(data)
+
 
         return (
             <div className="weatherWrapper" key={this.props.data.weather}>
@@ -53,7 +59,10 @@ class Weather extends React.Component {
                     />
                     <h3 id="description">{data.current.weather[0].description}</h3>
                 </div>
-                    
+
+                <div className="forecast">
+
+                </div>
             </div>
         )
     }
