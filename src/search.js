@@ -42,7 +42,6 @@ class Search extends React.Component {
                 lat: data[0].lat,
                 long: data[0].lon,
             });
-            console.log(this.state.name)
             this.getWeather();
         })
         .catch((error) => console.log(error))
@@ -57,7 +56,6 @@ class Search extends React.Component {
         fetch(url)
         .then(response => response.json())
         .then((data) => {
-            console.log(data);
             this.setState({
                 weather: data,
                 isLoaded: true,
@@ -73,7 +71,7 @@ class Search extends React.Component {
         if(!isLoaded) {
              element = <div></div>;
         } else {
-            element = <Weather key={weather} data={weather} name={this.state.name}/>;
+            element = <Weather data={weather} name={this.state.name}/>;
         }
         return (
             <div className="searchWrapper">
